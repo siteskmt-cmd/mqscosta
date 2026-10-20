@@ -567,3 +567,11 @@ footer .legal{margin-top:80px;padding-top:24px;border-top:1px solid rgba(255,255
 .ctaband .r strong{white-space:nowrap}
 .ctaband .wrap>h2{flex:1}
 @media (max-width:760px){.btn{white-space:normal}}
+
+.filters span{cursor:pointer}
+.store[hidden]{display:none}
+.mmenu{position:fixed;inset:0;z-index:50;overflow:auto}
+.mmenu[hidden]{display:none}
+.mmenu .x{background:none;border:0;color:#fff;cursor:pointer}
+.burger{cursor:pointer}
+.leaflet-container .leaflet-control-attribution{font-size:11px}

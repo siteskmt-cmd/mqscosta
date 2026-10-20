@@ -33,8 +33,39 @@ FOOTER = re.search(r"(<footer>.*</footer>)", home_body, re.S).group(1)
 WA = re.search(r'(<a class="wa-float".*?</a>)', home_body, re.S).group(1)
 
 
+WAURL = "https://wa.me/5514997043457"
+MAPS = "https://www.google.com/maps/search/?api=1&query="
+
+
+def mmenu(active):
+    items = [("index", "Início")] + NAV
+    links = "".join(f'<a href="{k}.html"{" class=\"on\"" if k == (active or "index") else ""}>{v}</a>' for k, v in items)
+    return f"""<div class="mmenu" id="mmenu" hidden><div class="hd"><img src="img/logo_branca.png" alt="Marques da Costa"><button class="x" type="button" aria-label="Fechar menu">×</button></div>
+<nav>{links}</nav>
+<div class="ft"><a class="btn wa" href="{WAURL}" target="_blank" rel="noopener">Pedir orçamento pelo WhatsApp</a><p>+55 14 99704-3457 · (14) 3425-2533<br>vendas@marquesdacosta.com.br</p></div></div>"""
+
+
+COMMON_JS = """<script>
+(function(){
+  var m=document.getElementById('mmenu'),b=document.querySelector('.burger');
+  if(b&&m){b.onclick=function(){m.hidden=false;document.body.style.overflow='hidden'};m.querySelector('.x').onclick=function(){m.hidden=true;document.body.style.overflow=''}}
+  document.querySelectorAll('.form .send .btn').forEach(function(btn){btn.onclick=function(){
+    var f=btn.closest('form'),t=['Olá! Vim pelo site da Marques da Costa.'];
+    f.querySelectorAll('label').forEach(function(l){var i=l.querySelector('input,select,textarea');if(i&&i.value)t.push(l.childNodes[0].textContent.trim()+': '+i.value)});
+    window.open('https://wa.me/5514997043457?text='+encodeURIComponent(t.join('\\n')),'_blank')}});
+  var c=document.querySelector('.calc');
+  if(c){var ins=c.querySelectorAll('input'),out=c.querySelector('.res b'),sm=c.querySelector('small');
+    var f=function(){var e=parseFloat(ins[0].value.replace(',','.')),p=parseFloat(ins[1].value.replace(',','.'));
+      if(e>0&&p>=0&&e>2*p){var d=+(e-2*p).toFixed(1);out.textContent=String(d).replace('.',',')+' mm';sm.textContent=e+' − (2 × '+p+') = '+d+' mm. Na dúvida, a equipe técnica confirma a medida com você.'}else out.textContent='—'};
+    ins.forEach(function(i){i.oninput=f});f()}
+})();
+</script>"""
+
+
 def page(slug, title, active, body):
-    html = HEAD.replace("__TITLE__", title) + header(active) + "<main>\n" + body + "\n</main>\n" + FOOTER + "\n" + WA + "\n</body>\n</html>\n"
+    html = HEAD.replace("__TITLE__", title) + header(active) + "<main>\n" + body + "\n</main>\n" + FOOTER + "\n" + WA + "\n" + mmenu(active) + "\n" + COMMON_JS + "\n</body>\n</html>\n"
+    html = html.replace('<a class="wa-float" href="#"', f'<a class="wa-float" href="{WAURL}" target="_blank" rel="noopener"')
+    html = html.replace('<meta name="viewport"', '<meta name="robots" content="noindex,nofollow">\n<meta name="viewport"')
     open(f"site/{slug}.html", "w").write(html)
 
 
@@ -43,11 +74,21 @@ os.makedirs("site", exist_ok=True)
 # ---------- Home ----------
 hb = re.sub(r"<header class=\"top\">.*?</header>", header("").strip(), home_body, flags=re.S)
 hb = re.search(r"<main>(.*)</main>", hb, re.S).group(1)
+for a, c in [('<a class="slab" href="#">', f'<a class="slab" href="{WAURL}" target="_blank" rel="noopener">'),
+             ('<a class="btn or" href="#">Orçar MU 4500', '<a class="btn or" href="mu-4500.html#orcamento">Orçar MU 4500'),
+             ('<a class="btn out" href="#">Ficha técnica', '<a class="btn out" href="mu-4500.html">Ficha técnica'),
+             ('<a class="btn or" href="#">Orçar MC 2000', '<a class="btn or" href="mc-2000.html#orcamento">Orçar MC 2000'),
+             ('<a href="#">Conheça nossa história', '<a href="empresa.html">Conheça nossa história'),
+             ('<a class="btn dk" href="#">Ver mapa de revendas', '<a class="btn dk" href="onde-comprar.html">Ver mapa de revendas'),
+             ('<a class="btn ln" href="#">Quero ser revendedor', '<a class="btn ln" href="seja-revendedor.html">Quero ser revendedor')]:
+    assert a in hb, a
+    hb = hb.replace(a, c)
+hb = hb.replace('<a href="#"><b>', '<a href="setores.html"><b>')
 page("index", "Limpeza de tubos industriais", "", hb)
 
-CTA = """<section class="ctaband"><div class="wrap">
+CTA = f"""<section class="ctaband"><div class="wrap">
   <h2 class="display">Precisa limpar<br>tubos? Fale com a fábrica.</h2>
-  <div class="r"><strong>+55 14 99704-3457</strong><a class="btn dk" href="contato.html">Pedir orçamento pelo WhatsApp</a></div>
+  <div class="r"><strong>+55 14 99704-3457</strong><a class="btn dk" href="{WAURL}" target="_blank" rel="noopener">Pedir orçamento pelo WhatsApp</a></div>
 </div></section>"""
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg>'
@@ -147,7 +188,7 @@ def product_page(slug):
   <div class="in">
     <h1 class="display">{p['name']}</h1>
     <p class="lead">{p['lead']}</p>
-    <div class="acts"><a class="btn wa" href="#orcamento">Orçar o {p['name']}</a><a class="btn out" href="#">Baixar ficha técnica (PDF)</a></div>
+    <div class="acts"><a class="btn wa" href="#orcamento">Orçar o {p['name']}</a><a class="btn out" href="#orcamento">Pedir ficha técnica</a></div>
   </div>
   <div class="cut"></div>
 </section>
@@ -333,7 +374,8 @@ STORES = [
     ("Tecnobor", "Itajaí · SC", "Av. Governador Adolfo Konder, 705", False),
     ("Tecnobor", "São Paulo · SP", "Rua Antonio Fonseca, 523", False),
 ]
-sl = "".join(f'<div class="store{" mx" if m else ""}"><b>{n}</b><span class="c">{c}</span><span class="t">{t}</span><a class="r" href="#">Como chegar</a></div>' for n, c, t, m in STORES)
+from urllib.parse import quote
+sl = "".join(f'<div class="store{" mx" if m else ""}" data-uf="{c[-2:]}" data-q="{(n+" "+c).lower()}"><b>{n}</b><span class="c">{c}</span><span class="t">{t}</span><a class="r" href="{MAPS}{quote(t.split(" · ")[0]+", "+c.replace(" · ", " "))}" target="_blank" rel="noopener">Como chegar</a></div>' for n, c, t, m in STORES)
 oc = f"""<section class="phero plain">
   <div class="in"><h1 class="display">Onde<br><span>comprar</span></h1>
   <p class="lead">Matriz em Marília, filiais em Recife e Pontal e 13 revendas autorizadas com acessórios e reposição.</p></div>
@@ -351,13 +393,18 @@ oc = f"""<section class="phero plain">
 <link rel="stylesheet" href="vendor/leaflet.css">
 <script src="vendor/leaflet.js"></script><script src="vendor/br-uf.js"></script><script src="vendor/revendas.js"></script>
 <script>
-const map=L.map('map',{{zoomControl:true,attributionControl:false,scrollWheelZoom:false}});
-const uf=L.geoJSON(BR_UF,{{style:{{color:'#C9CBD0',weight:1,fillColor:'#FFFFFF',fillOpacity:1}}}}).addTo(map);
+const map=L.map('map',{{zoomControl:true,scrollWheelZoom:false}});
+L.tileLayer('https://{{s}}.basemaps.cartocdn.com/light_all/{{z}}/{{x}}/{{y}}{{r}}.png',{{attribution:'&copy; OpenStreetMap &copy; CARTO',subdomains:'abcd',maxZoom:19}}).addTo(map);
+const ufLayer=L.geoJSON(BR_UF);
 const ic=t=>L.divIcon({{className:'pin pin-'+t,iconSize:t==='matriz'?[26,26]:[18,18]}});
 let matriz;
-REVENDAS.forEach(r=>{{const m=L.marker([r.lat,r.lng],{{icon:ic(r.tipo)}}).addTo(map).bindPopup('<b>'+r.nome+'</b><br>'+r.cidade+'<br><a href="#">Como chegar</a>');if(r.tipo==='matriz')matriz=m;}});
-map.fitBounds(uf.getBounds(),{{padding:[12,12]}});
+REVENDAS.forEach(r=>{{const m=L.marker([r.lat,r.lng],{{icon:ic(r.tipo)}}).addTo(map).bindPopup('<b>'+r.nome+'</b><br>'+r.cidade+'<br><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination='+r.lat+','+r.lng+'">Como chegar</a>');if(r.tipo==='matriz')matriz=m;}});
+map.fitBounds(ufLayer.getBounds(),{{padding:[12,12]}});
 matriz.openPopup();
+const ss=[...document.querySelectorAll('.store')],inp=document.querySelector('.search input'),chips=[...document.querySelectorAll('.filters span')];let uf='Todos';
+const ap=()=>{{const q=inp.value.trim().toLowerCase();ss.forEach(s=>{{s.hidden=!((uf==='Todos'||s.dataset.uf===uf)&&(!q||s.dataset.q.includes(q)||s.textContent.toLowerCase().includes(q)))}})}};
+chips.forEach(c=>c.onclick=()=>{{chips.forEach(x=>x.classList.remove('on'));c.classList.add('on');uf=c.textContent;ap()}});
+inp.oninput=ap;document.querySelector('.search button').onclick=ap;
 </script>
 <section class="ctaband"><div class="wrap">
   <h2 class="display">Quer revender<br>Marques da Costa?</h2>
@@ -405,9 +452,9 @@ page("seja-revendedor", "Seja um revendedor", "onde-comprar", sr)
 
 # ---------- Empresa ----------
 UNITS = """<div class="units">
-  <div><b>Matriz</b><p>Av. Eugênio Coneglian, 2586 · Distrito Industrial<br>Marília/SP · CEP 17512-050<br>(14) 3425-2533 · (14) 3425-2544</p><a href="#">Como chegar</a></div>
-  <div><b>Filial Nordeste</b><p>Rua Itacari, 369 · Imbiribeira<br>Recife/PE · CEP 51200-080<br>(81) 3471-3275 · (81) 99600-9479</p><a href="#">Como chegar</a></div>
-  <div><b>Filial Pontal</b><p>Rua Rui Barbosa, 488 · Vila Adelaide de Freitas<br>Pontal/SP · CEP 14180-000<br>(16) 3953-1544 · (16) 98129-8719</p><a href="#">Como chegar</a></div>
+  <div><b>Matriz</b><p>Av. Eugênio Coneglian, 2586 · Distrito Industrial<br>Marília/SP · CEP 17512-050<br>(14) 3425-2533 · (14) 3425-2544</p><a href="https://www.google.com/maps/search/?api=1&query=Av.%20Eug%C3%AAnio%20Coneglian%2C%202586%2C%20Mar%C3%ADlia%20SP" target="_blank" rel="noopener">Como chegar</a></div>
+  <div><b>Filial Nordeste</b><p>Rua Itacari, 369 · Imbiribeira<br>Recife/PE · CEP 51200-080<br>(81) 3471-3275 · (81) 99600-9479</p><a href="https://www.google.com/maps/search/?api=1&query=Rua%20Itacari%2C%20369%2C%20Recife%20PE" target="_blank" rel="noopener">Como chegar</a></div>
+  <div><b>Filial Pontal</b><p>Rua Rui Barbosa, 488 · Vila Adelaide de Freitas<br>Pontal/SP · CEP 14180-000<br>(16) 3953-1544 · (16) 98129-8719</p><a href="https://www.google.com/maps/search/?api=1&query=Rua%20Rui%20Barbosa%2C%20488%2C%20Pontal%20SP" target="_blank" rel="noopener">Como chegar</a></div>
 </div>"""
 em = f"""<section class="phero" style="--img:url(img/fachada.jpg);--pos:50% 70%">
   <div class="in"><h1 class="display">Três gerações.<br><span>Mesma fábrica.</span></h1>
@@ -447,7 +494,7 @@ ct = f"""<section class="phero plain">
 </section>
 <section class="sec"><div class="wrap">
   <div class="chan">
-    <div><dt>WhatsApp comercial</dt><dd>+55 14 99704-3457<small><a class="btn wa" style="margin-top:14px" href="#">Abrir conversa</a></small></dd></div>
+    <div><dt>WhatsApp comercial</dt><dd>+55 14 99704-3457<small><a class="btn wa" style="margin-top:14px" href="{WAURL}" target="_blank" rel="noopener">Abrir conversa</a></small></dd></div>
     <div><dt>Central de atendimento</dt><dd>(14) 3425-2533<small>(14) 3425-2544 · segunda a sexta</small></dd></div>
     <div><dt>E-mail</dt><dd style="font-size:32px">vendas@<br>marquesdacosta.com.br<small>Projetos especiais: projeto@marquesdacosta.com.br</small></dd></div>
   </div>
