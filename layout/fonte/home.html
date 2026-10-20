@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marques da Costa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#F15A22;
+  --orange-deep:#C2410C;
+  --ink:#0F0F10;
+  --ink-2:#1A1A1C;
+  --steel:#5A5D63;
+  --line:#D7D8DB;
+  --white:#FFFFFF;
+  --wa:#1F9D55;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--white);color:var(--ink);font-family:'Archivo',sans-serif;font-stretch:100%;font-size:17px;line-height:1.55;font-variant-numeric:tabular-nums}
+::selection{background:var(--orange);color:var(--ink)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.display{font-stretch:62%;font-weight:800;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.wrap{max-width:1312px;margin:0 auto;padding:0 48px}
+
+/* ---------- Header ---------- */
+.top{position:absolute;inset:0 0 auto 0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:28px 48px;color:#fff}
+.top .logo{height:58px}
+.top nav{display:flex;align-items:center;gap:36px;font-size:15px;font-weight:500}
+.top nav a{opacity:.9}
+.top .call{font-stretch:75%;font-weight:700;font-size:18px;letter-spacing:.01em;border-bottom:2px solid var(--orange);padding-bottom:2px}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;height:1000px;background:#111 url(img/4.jpg) 58% 100%/cover no-repeat;color:#fff;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(10,10,11,.88) 0%,rgba(10,10,11,.55) 38%,rgba(10,10,11,0) 62%),
+  linear-gradient(90deg,rgba(10,10,11,.55) 0%,rgba(10,10,11,0) 55%)}
+.hero .copy{position:absolute;left:48px;top:132px;z-index:2;max-width:900px}
+.hero h1{font-size:132px}
+.hero h1 span{color:var(--orange)}
+.hero p{margin-top:26px;font-size:20px;line-height:1.45;max-width:520px;color:rgba(255,255,255,.88)}
+.slab{position:absolute;right:0;bottom:0;z-index:3;width:660px;height:230px;background:var(--orange);color:var(--ink);
+  clip-path:polygon(18% 0,100% 0,100% 100%,0 100%);padding:44px 48px 40px 170px;display:flex;flex-direction:column;justify-content:space-between}
+.slab b{font-stretch:62%;font-weight:800;font-size:46px;line-height:.9;text-transform:uppercase}
+.slab .row{display:flex;justify-content:space-between;align-items:baseline;font-weight:600}
+.slab .row span:last-child{font-stretch:75%;font-size:22px;font-weight:700}
+.figcap{position:absolute;left:48px;bottom:34px;z-index:2;font-size:13px;color:rgba(255,255,255,.75);max-width:300px;line-height:1.4}
+.figcap strong{color:#fff;font-weight:600}
+
+/* ---------- Incrustação ---------- */
+.why{display:grid;grid-template-columns:44% 56%;min-height:780px}
+.why .photo{background:url(img/3.jpg) 30% 50%/cover no-repeat}
+.why .txt{padding:110px 48px 96px 88px}
+.why h2{font-size:92px;max-width:640px}
+.why h2 span{color:var(--orange-deep)}
+.why .intro{margin-top:28px;max-width:520px;color:#3B3D42;font-size:19px}
+.loss{margin-top:56px;max-width:640px;border-top:2px solid var(--ink)}
+.loss .r{display:grid;grid-template-columns:150px 1fr 120px;align-items:center;gap:24px;padding:16px 0;border-bottom:1px solid var(--line)}
+.loss .mm{font-weight:600;color:var(--steel)}
+.loss .bar{height:10px;background:#ECEDEF;position:relative}
+.loss .bar i{position:absolute;inset:0 auto 0 0;background:var(--ink)}
+.loss .r:last-child .bar i{background:var(--orange)}
+.loss .pct{font-stretch:62%;font-weight:800;font-size:52px;line-height:1;text-align:right}
+.loss .hd{display:grid;grid-template-columns:150px 1fr 120px;gap:24px;padding:12px 0;font-size:14px;color:var(--steel);border-bottom:1px solid var(--line)}
+.loss .hd span:last-child{text-align:right}
+
+/* ---------- Equipamentos ---------- */
+.equip{background:var(--ink);color:#fff;position:relative;padding:140px 0 0}
+.equip:before{content:"";position:absolute;left:0;right:0;top:-1px;height:90px;background:var(--white);clip-path:polygon(0 0,100% 0,100% 0,0 100%)}
+.equip .head{display:flex;justify-content:space-between;align-items:flex-end;gap:48px;margin-bottom:72px}
+.equip h2{font-size:112px}
+.equip .head p{max-width:400px;color:#B9BBC0;font-size:18px}
+.spec{width:100%;border-collapse:collapse;font-size:15px}
+.spec td{padding:11px 0;border-top:1px solid rgba(255,255,255,.14);vertical-align:top}
+.spec td:first-child{color:#9DA0A6;width:44%}
+.spec td:last-child{font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:12px;font-weight:700;font-size:16px;padding:16px 26px}
+.btn.or{background:var(--orange);color:var(--ink)}
+.btn.out{border:1.5px solid rgba(255,255,255,.5);color:#fff}
+.btn svg{width:18px;height:18px}
+
+.mu{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:end;padding-bottom:120px}
+.mu .name{font-size:220px;color:#fff;line-height:.8}
+.mu .name small{display:block;font-size:40px;color:var(--orange);margin-top:18px;letter-spacing:0}
+.mu .art{position:relative;height:560px}
+.mu .art img{position:absolute;right:30px;bottom:-30px;width:470px;filter:drop-shadow(0 34px 28px rgba(0,0,0,.55))}
+.mu .info{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:56px;grid-column:1/-1}
+.mu .info p{color:#C9CBD0;font-size:19px;max-width:520px}
+.mu .info .acts{display:flex;gap:12px;margin-top:28px}
+
+.mc{position:relative;height:820px;background:url(img/2.jpg) 30% 50%/cover no-repeat}
+.mc:after{content:"";position:absolute;inset:0;background:linear-gradient(270deg,rgba(15,15,16,.96) 0%,rgba(15,15,16,.9) 34%,rgba(15,15,16,0) 62%)}
+.mc .panel{position:absolute;right:48px;top:0;bottom:0;width:480px;z-index:2;display:flex;flex-direction:column;justify-content:center}
+.mc .panel h3{font-size:150px;line-height:.8}
+.mc .panel h3 small{display:block;font-size:36px;color:var(--orange);margin-top:16px}
+.mc .panel p{color:#C9CBD0;margin:26px 0 26px;font-size:18px}
+
+.me{padding-top:120px;padding-bottom:140px}
+.me .top-row{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:48px}
+.me h3{font-size:150px;line-height:.8}
+.me h3 small{display:block;font-size:36px;color:var(--orange);margin-top:16px}
+.me .top-row p{color:#C9CBD0;font-size:18px;max-width:520px}
+.me .pair{display:grid;grid-template-columns:1.25fr 1fr;gap:16px}
+.me figure{position:relative}
+.me figure img{width:100%;height:440px;object-fit:cover}
+.me figure:nth-child(2) img{object-position:70% 50%}
+.me figcaption{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.me figcaption b{font-stretch:62%;font-weight:800;font-size:40px;text-transform:uppercase;line-height:1}
+.me figcaption span{color:#9DA0A6;font-size:15px}
+.me .spec-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px}
+.me .spec-row div{border-top:2px solid var(--orange);padding-top:14px}
+.me .spec-row dt{color:#9DA0A6;font-size:14px}
+.me .spec-row dd{font-stretch:75%;font-weight:700;font-size:26px;line-height:1.2;margin-top:4px}
+
+/* ---------- Setores ---------- */
+.setores{padding:150px 0 140px}
+.setores .head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
+.setores h2{font-size:112px}
+.setores .head p{color:#3B3D42;font-size:19px;max-width:480px}
+.idx{border-top:2px solid var(--ink)}
+.idx a{display:grid;grid-template-columns:1.1fr 1.3fr .6fr;gap:32px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line)}
+.idx b{font-stretch:68%;font-weight:800;font-size:46px;text-transform:uppercase;line-height:1}
+.idx span{color:#3B3D42}
+.idx em{font-style:normal;font-weight:600;font-size:14px;color:var(--steel);text-align:right}
+.idx a.on{background:var(--ink);color:#fff;margin:0 -24px;padding:22px 24px;border-bottom-color:var(--ink)}
+.idx a.on span{color:#C9CBD0}
+.idx a.on em{color:var(--orange)}
+
+/* ---------- História ---------- */
+.historia{position:relative;height:760px;background:url(img/fachada.jpg) 50% 72%/cover no-repeat;color:#fff}
+.historia:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,11,.86) 0%,rgba(10,10,11,.25) 52%,rgba(10,10,11,0) 75%)}
+.historia .copy{position:absolute;left:48px;right:48px;bottom:64px;z-index:2;display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:end}
+.historia h2{font-size:104px}
+.historia p{font-size:19px;color:rgba(255,255,255,.9)}
+.historia a{display:inline-block;margin-top:22px;font-weight:700;border-bottom:2px solid var(--orange);padding-bottom:3px}
+
+/* ---------- Onde comprar ---------- */
+.onde{background:var(--orange);color:var(--ink);padding:130px 0 120px;position:relative}
+.onde .head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:64px}
+.onde h2{font-size:132px}
+.onde .head p{font-size:19px;max-width:460px;font-weight:500}
+.states{display:grid;grid-template-columns:repeat(4,1fr);gap:0 48px}
+.st{border-top:2px solid var(--ink);padding:16px 0 30px}
+.st h3{font-stretch:62%;font-weight:800;font-size:44px;line-height:1;text-transform:uppercase}
+.st ul{list-style:none;margin-top:12px;font-size:15px;font-weight:500}
+.st li{padding:4px 0}
+.st li small{display:block;font-size:13px;font-weight:400}
+.onde .acts{display:flex;gap:12px;margin-top:40px}
+.onde .btn.dk{background:var(--ink);color:#fff}
+.onde .btn.ln{border:1.5px solid var(--ink)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ink);color:#C9CBD0;padding:96px 0 40px;font-size:15px}
+footer .grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px}
+footer .logo{height:72px}
+footer h5{color:#fff;font-stretch:68%;font-weight:800;font-size:26px;text-transform:uppercase;margin-bottom:12px;letter-spacing:.01em}
+footer .big{margin-top:28px;color:#fff;font-stretch:68%;font-weight:800;font-size:38px;white-space:nowrap;line-height:1}
+footer .big small{display:block;font-stretch:100%;font-weight:400;font-size:14px;color:#9DA0A6;margin-top:8px}
+footer .legal{margin-top:80px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;font-size:13px;color:#8C8F95}
+
+.wa-float{position:fixed;right:28px;bottom:28px;z-index:20;width:60px;height:60px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.45)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+
+/* ---------- Mobile ---------- */
+.burger{display:none}
+@media (max-width:760px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  .top{padding:18px 20px}
+  .top .logo{height:44px}
+  .top nav{display:none}
+  .burger{display:flex;flex-direction:column;gap:6px;width:28px}
+  .burger i{height:2px;background:#fff;display:block}
+  .hero{height:760px;background-position:22% 100%}
+  .hero:before{background:linear-gradient(180deg,rgba(10,10,11,.92) 0%,rgba(10,10,11,.6) 45%,rgba(10,10,11,.05) 70%)}
+  .hero .copy{left:20px;right:20px;top:104px}
+  .hero h1{font-size:70px}
+  .hero p{font-size:17px;margin-top:18px}
+  .slab{width:100%;height:136px;padding:26px 20px 22px 92px;clip-path:polygon(22% 0,100% 0,100% 100%,0 100%)}
+  .slab b{font-size:30px}
+  .slab .row{font-size:14px}
+  .slab .row span:first-child{display:none}
+  .slab .row span:last-child{font-size:17px}
+  .figcap{display:none}
+  .why{grid-template-columns:1fr}
+  .why .photo{height:340px}
+  .why .txt{padding:56px 20px 64px}
+  .why h2{font-size:52px}
+  .loss .r,.loss .hd{grid-template-columns:78px 1fr 66px;gap:12px}
+  .loss .pct{font-size:34px}
+  .equip{padding-top:96px}
+  .equip:before{height:44px}
+  .equip .head{flex-direction:column;align-items:flex-start;gap:18px;margin-bottom:24px}
+  .equip h2{font-size:60px}
+  .mu{grid-template-columns:1fr;padding-bottom:72px}
+  .mu .name{font-size:104px}
+  .mu .name small{font-size:24px}
+  .mu .art{height:auto;margin-top:28px}
+  .mu .art img{position:static;width:290px;margin:0 auto}
+  .mu .info{grid-template-columns:1fr;gap:28px;margin-top:20px}
+  .mu .info .acts{flex-direction:column}
+  .mc{height:auto;background-size:auto 360px;background-position:28% 0;padding-top:340px}
+  .mc:after{background:linear-gradient(180deg,rgba(15,15,16,0) 0px,rgba(15,15,16,.2) 220px,rgba(15,15,16,1) 360px)}
+  .mc .panel{position:relative;right:auto;width:auto;padding:0 20px 72px}
+  .mc .panel h3,.me h3{font-size:92px}
+  .mc .panel h3 small,.me h3 small{font-size:24px}
+  .me{padding-top:24px;padding-bottom:80px}
+  .me .top-row,.me .pair{grid-template-columns:1fr;gap:20px}
+  .me figure img{height:260px}
+  .me figcaption{flex-direction:column;gap:4px}
+  .me figcaption b{font-size:30px}
+  .me .spec-row{grid-template-columns:1fr 1fr;gap:20px}
+  .me .spec-row dd{font-size:21px}
+  .setores{padding:80px 0}
+  .setores .head{grid-template-columns:1fr;gap:16px;margin-bottom:28px}
+  .setores h2{font-size:60px}
+  .idx a{grid-template-columns:1fr;gap:6px;padding:18px 0}
+  .idx b{font-size:32px}
+  .idx em{text-align:left}
+  .idx a.on{margin:0 -20px;padding:18px 20px}
+  .historia{height:640px;background-position:38% 50%}
+  .historia .copy{left:20px;right:20px;bottom:40px;grid-template-columns:1fr;gap:16px}
+  .historia h2{font-size:58px}
+  .onde{padding:80px 0}
+  .onde .head{grid-template-columns:1fr;gap:16px;margin-bottom:32px}
+  .onde h2{font-size:72px}
+  .states{grid-template-columns:1fr 1fr;gap:0 20px}
+  .st h3{font-size:32px}
+  .onde .acts{flex-direction:column}
+  footer .grid{grid-template-columns:1fr;gap:36px}
+  footer .legal{flex-direction:column;gap:8px}
+  .wa-float{right:16px;bottom:16px;width:54px;height:54px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <img class="logo" src="img/logo_branca.png" alt="Marques da Costa">
+  <nav>
+    <a href="#">Equipamentos</a><a href="#">Acessórios</a><a href="#">Setores</a><a href="#">Onde comprar</a><a href="#">Empresa</a>
+    <a class="call" href="#">+55 14 99704-3457</a>
+  </nav>
+  <div class="burger" aria-hidden="true"><i></i><i></i><i></i></div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="copy">
+    <h1 class="display">Tubo limpo.<br>Caldeira<br><span>rendendo.</span></h1>
+    <p>Motores e eixos flexíveis para limpeza de tubos em usinas, caldeiras e trocadores de calor. Fabricados em Marília/SP desde 1964.</p>
+  </div>
+  <p class="figcap"><strong>MU 4500</strong> na limpeza de um trocador de calor.</p>
+  <a class="slab" href="#">
+    <b>Pedir orçamento<br>pelo WhatsApp</b>
+    <span class="row"><span>Resposta da equipe técnica</span><span>+55 14 99704-3457</span></span>
+  </a>
+</section>
+
+<section class="why">
+  <div class="photo" role="img" aria-label="Roseta de aço removendo incrustação de um tubo"></div>
+  <div class="txt">
+    <h2 class="display">Cada milímetro de incrustação <span>é combustível queimado.</span></h2>
+    <p class="intro">Tubo sujo troca menos calor. A caldeira passa a gastar mais lenha, óleo ou bagaço para entregar o mesmo vapor. A limpeza mecânica devolve a eficiência.</p>
+    <div class="loss">
+      <div class="hd"><span>Incrustação</span><span></span><span>Perda térmica</span></div>
+      <div class="r"><span class="mm">0,78 mm</span><span class="bar"><i style="width:13.8%"></i></span><span class="pct">9,5%</span></div>
+      <div class="r"><span class="mm">1,50 mm</span><span class="bar"><i style="width:37.7%"></i></span><span class="pct">26%</span></div>
+      <div class="r"><span class="mm">3,10 mm</span><span class="bar"><i style="width:65.7%"></i></span><span class="pct">45,3%</span></div>
+      <div class="r"><span class="mm">4,60 mm</span><span class="bar"><i style="width:100%"></i></span><span class="pct">69%</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="equip">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="display">Três máquinas.<br>Um sistema.</h2>
+      <p>Motor, eixo flexível, caneta e ferramenta saem da mesma fábrica — compatíveis entre si e com reposição garantida.</p>
+    </div>
+
+    <div class="mu">
+      <h3 class="display name">MU 4500<small>Usinas e evaporadores</small></h3>
+      <div class="art"><img src="img/mu4500.png" alt="Motor MU 4500"></div>
+      <div class="info">
+        <div>
+          <p>O motor tradicional das usinas de açúcar. Alta rotação para arrancar incrustação endurecida dos tubos de evaporadores, trabalhando com roseta de aço.</p>
+          <div class="acts">
+            <a class="btn or" href="#">Orçar MU 4500</a>
+            <a class="btn out" href="#">Ficha técnica</a>
+          </div>
+        </div>
+        <table class="spec">
+          <tr><td>Rotação</td><td>4.500 rpm</td></tr>
+          <tr><td>Motor</td><td>Trifásico 3 CV · 220 / 380 / 440 V</td></tr>
+          <tr><td>Eixo flexível</td><td>Ø 19, 25 ou 30 mm · 5 a 12 m</td></tr>
+          <tr><td>Ferramenta indicada</td><td>Roseta de aço</td></tr>
+          <tr><td>Venda</td><td>Exclusiva pela matriz, Marília/SP</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="mc">
+    <div class="panel">
+      <h3 class="display">MC 2000<small>Caldeiras industriais</small></h3>
+      <p>Base móvel inclusa e eixo de até 30 metros: leva a limpeza até a caldeira, sem desmontar nada. Ideal com escova de aço.</p>
+      <table class="spec">
+        <tr><td>Rotação</td><td>2.000 rpm</td></tr>
+        <tr><td>Motor</td><td>Trifásico 3 CV · 220 / 380 / 440 V</td></tr>
+        <tr><td>Eixo flexível</td><td>Ø 19 a 34 mm · 5 a 30 m</td></tr>
+        <tr><td>Vem com</td><td>Eixo, caneta e base móvel</td></tr>
+      </table>
+      <div style="margin-top:28px"><a class="btn or" href="#">Orçar MC 2000</a></div>
+    </div>
+  </div>
+
+  <div class="wrap me">
+    <div class="top-row">
+      <h3 class="display">ME 1.5<small>Esmeril com mangote</small></h3>
+      <p>Um motor, duas funções. A troca da peça na ponta do eixo transforma o equipamento de escareação de pneus em polidor de metais.</p>
+    </div>
+    <div class="pair">
+      <figure><img src="img/1.jpg" alt="ME 1.5 na escareação de pneu"><figcaption><b>Escareação</b><span>Recapagem de pneus</span></figcaption></figure>
+      <figure><img src="img/5.jpg" alt="ME 1.5 no polimento de tanque inox"><figcaption><b>Polimento</b><span>Desbaste e acabamento de metais</span></figcaption></figure>
+    </div>
+    <dl class="spec-row">
+      <div><dt>Rotação</dt><dd>3.450 rpm</dd></div>
+      <div><dt>Motor</dt><dd>1,5 CV mono ou trifásico</dd></div>
+      <div><dt>Eixo flexível</dt><dd>2 ou 3 m</dd></div>
+      <div><dt>Disco / lixa</dt><dd>até 6"</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="setores">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="display">Onde nossas máquinas trabalham</h2>
+      <p>Do evaporador da usina à recapagem de pneus: oito setores que dependem de tubo limpo e superfície bem preparada.</p>
+    </div>
+    <div class="idx">
+      <a href="#"><b>Sucroenergético</b><span>Evaporadores de usinas de açúcar e etanol, destilarias</span><em>MU 4500 · Roseta</em></a>
+      <a href="#"><b>Caldeiras industriais</b><span>Tubos de caldeiras a vapor e geração de energia</span><em>MC 2000 · Escova</em></a>
+      <a href="#"><b>Alimentício</b><span>Secadores de grãos, amendoim e café</span><em>MC 2000</em></a>
+      <a href="#"><b>Papel e celulose</b><span>Tubulações de processo e caldeiras</span><em>MC 2000 · MU 4500</em></a>
+      <a href="#"><b>Petroquímico</b><span>Refinarias e plantas industriais</span><em>MC 2000 · MU 4500</em></a>
+      <a href="#"><b>Borracha e pneus</b><span>Escareação de carcaças e reforma de pneus</span><em>ME 1.5</em></a>
+      <a href="#"><b>Metalurgia</b><span>Polimento e desbaste de ligas metálicas</span><em>ME 1.5</em></a>
+    </div>
+  </div>
+</section>
+
+<section class="historia">
+  <div class="copy">
+    <h2 class="display">Três gerações.<br>Mesma fábrica.</h2>
+    <div>
+      <p>Em 1964, Heráclito Marques da Costa e o filho Antônio trocaram a limpeza manual dos evaporadores por uma máquina. A família segue em Marília, fabricando cada equipamento.</p>
+      <a href="#">Conheça nossa história</a>
+    </div>
+  </div>
+</section>
+
+<section class="onde">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="display">Perto de quem usa.</h2>
+      <p>Matriz em Marília, filiais em Recife e Pontal e 13 revendas autorizadas com acessórios e reposição.</p>
+    </div>
+    <div class="states">
+      <div class="st"><h3>São Paulo</h3><ul>
+        <li>Matriz Marques da Costa<small>Marília</small></li>
+        <li>Filial Pontal<small>Pontal</small></li>
+        <li>Norte Sul · Pré-Forte · Tecnobor<small>São Paulo</small></li>
+        <li>Comax · Sabrafer<small>Guarulhos</small></li>
+        <li>Fabio Pelicer · Máquinas PLC<small>São José do Rio Preto</small></li>
+        <li>Palhinha<small>Ribeirão Preto</small></li>
+      </ul></div>
+      <div class="st"><h3>Sul</h3><ul>
+        <li>Casa da Caldeira<small>Paiçandu · PR</small></li>
+        <li>Tecnobor<small>Itajaí · SC</small></li>
+        <li>Loop Industrial<small>Bento Gonçalves · RS</small></li>
+      </ul></div>
+      <div class="st"><h3>MG e ES</h3><ul>
+        <li>Gebor Comercial<small>Contagem · MG</small></li>
+        <li>Gebor Importação<small>Serra · ES</small></li>
+      </ul></div>
+      <div class="st"><h3>Nordeste</h3><ul>
+        <li>Filial Nordeste<small>Recife · PE</small></li>
+      </ul></div>
+    </div>
+    <div class="acts">
+      <a class="btn dk" href="#">Ver mapa de revendas</a>
+      <a class="btn ln" href="#">Quero ser revendedor</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <img class="logo" src="img/logo_branca.png" alt="Marques da Costa">
+        <p class="big">+55 14 99704-3457<small>WhatsApp comercial</small></p>
+      </div>
+      <div><h5>Matriz</h5><p>Av. Eugênio Coneglian, 2586<br>Distrito Industrial · Marília/SP<br>CEP 17512-050<br>(14) 3425-2533 · 3425-2544<br>vendas@marquesdacosta.com.br</p></div>
+      <div><h5>Filial Nordeste</h5><p>Rua Itacari, 369<br>Imbiribeira · Recife/PE<br>(81) 3471-3275<br>(81) 99600-9479</p></div>
+      <div><h5>Filial Pontal</h5><p>Rua Rui Barbosa, 488<br>Vila Adelaide de Freitas · Pontal/SP<br>(16) 3953-1544<br>(16) 98129-8719</p></div>
+    </div>
+    <div class="legal"><span>Indústrias Marques da Costa Ltda · CNPJ 52.045.523/0001-58</span><span>© 2026</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg></a>
+
+</body>
+</html>
