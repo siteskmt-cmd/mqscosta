@@ -1,0 +1,47 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aprovação de Layout — Marques da Costa</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{--bg:#2B2C2F;--panel:#1E1F22;--txt:#E9E9EA;--mut:#A3A5AA;--acc:#F15A22}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font:15px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--panel);border-bottom:1px solid #000;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;padding:10px 16px}
+header b{font-size:15px} header span{color:var(--mut);font-size:13px}
+.ctl{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+select{font:600 14px inherit;background:#111;color:var(--txt);border:1px solid #444;border-radius:8px;padding:8px 10px}
+.tabs{display:flex;background:#111;border-radius:8px;padding:3px}
+.tabs button,.nav button{border:0;background:none;color:var(--mut);font:600 13px inherit;padding:8px 14px;border-radius:6px;cursor:pointer}
+.tabs button.on{background:var(--txt);color:#111}
+.nav{display:flex;gap:4px}.nav button{background:#111;color:var(--txt)}
+.wrap{display:grid;grid-template-columns:1fr 300px;gap:24px;padding:24px 16px 64px;max-width:1800px;margin:0 auto;align-items:start}
+.stage{display:flex;justify-content:center;min-width:0}
+#img{display:block;max-width:100%;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.mob #img{width:390px;border:10px solid #0b0b0c;border-radius:36px}
+aside{position:sticky;top:76px;background:var(--panel);border-radius:10px;padding:18px 18px 20px}
+aside h2{font-size:18px;margin-bottom:12px}
+aside h3{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--acc);margin:16px 0 6px}
+aside li{margin:4px 0 4px 18px;color:#D3D4D7;font-size:14px}
+aside p.none{color:var(--mut);font-size:14px}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}aside{position:static}.mob #img{width:100%}}
+</style></head><body>
+<header><div><b>Marques da Costa · Novo site</b><br><span>Proposta de layout · versão 3 · 20/10/2026</span></div>
+<div class="ctl"><div class="nav"><button id="prev" aria-label="Página anterior">◀</button><button id="next" aria-label="Próxima página">▶</button></div>
+<select id="sel"></select><div class="tabs"><button class="on" data-d="desktop">Desktop</button><button data-d="mobile">Celular</button></div></div></header>
+<div class="wrap"><div class="stage" id="stage"><img id="img" alt=""></div>
+<aside><h2 id="t"></h2><h3>Editável no painel</h3><ul id="pn"></ul><h3>Para o programador</h3><ul id="ob"></ul></aside></div>
+<script>
+const IMG={"acessorios-desktop": "telas/acessorios-desktop.jpg", "acessorios-mobile": "telas/acessorios-mobile.jpg", "contato-desktop": "telas/contato-desktop.jpg", "contato-mobile": "telas/contato-mobile.jpg", "empresa-desktop": "telas/empresa-desktop.jpg", "empresa-mobile": "telas/empresa-mobile.jpg", "equipamentos-desktop": "telas/equipamentos-desktop.jpg", "equipamentos-mobile": "telas/equipamentos-mobile.jpg", "index-desktop": "telas/index-desktop.jpg", "index-mobile": "telas/index-mobile.jpg", "mc-2000-desktop": "telas/mc-2000-desktop.jpg", "mc-2000-mobile": "telas/mc-2000-mobile.jpg", "me-15-desktop": "telas/me-15-desktop.jpg", "me-15-mobile": "telas/me-15-mobile.jpg", "menu-mobile-mobile": "telas/menu-mobile-mobile.jpg", "mu-4500-desktop": "telas/mu-4500-desktop.jpg", "mu-4500-mobile": "telas/mu-4500-mobile.jpg", "onde-comprar-desktop": "telas/onde-comprar-desktop.jpg", "onde-comprar-mobile": "telas/onde-comprar-mobile.jpg", "seja-revendedor-desktop": "telas/seja-revendedor-desktop.jpg", "seja-revendedor-mobile": "telas/seja-revendedor-mobile.jpg", "setores-desktop": "telas/setores-desktop.jpg", "setores-mobile": "telas/setores-mobile.jpg"};const META=[{"slug": "index", "nome": "Home", "painel": ["Foto e textos do topo", "Destaques de equipamentos (vêm do cadastro de produtos)", "Setores (vêm do cadastro de setores)", "Revendas resumidas por região (vêm do cadastro de revendas)", "Telefone/WhatsApp global"], "obs": ["Botão flutuante do WhatsApp em todas as páginas (oculto nas pranchas).", "A tabela de perda térmica é conteúdo fixo."]}, {"slug": "equipamentos", "nome": "Equipamentos", "painel": ["Lista gerada a partir dos produtos cadastrados", "Tabela \"Qual escolher?\" montada com os campos da ficha técnica"], "obs": ["Ao cadastrar um produto novo, ele entra na lista e na tabela automaticamente."]}, {"slug": "mu-4500", "nome": "Produto · MU 4500", "painel": ["Nome, subtítulo e foto do topo", "Textos e aplicações", "Itens de série", "Ficha técnica (pares rótulo/valor, quantidade livre)", "Acessórios relacionados (recomendado/compatível)", "PDF da ficha técnica"], "obs": ["Página modelo: MU 4500, MC 2000 e ME 1.5 usam o mesmo template.", "O formulário chega com o produto já selecionado e envia para WhatsApp/e-mail."]}, {"slug": "mc-2000", "nome": "Produto · MC 2000", "painel": ["Mesmo template da página de produto"], "obs": ["Exemplo do template com outra foto e outra ficha."]}, {"slug": "me-15", "nome": "Produto · ME 1.5", "painel": ["Mesmo template, com bloco opcional \"Duas versões\""], "obs": ["O bloco de versões aparece só quando o produto tem variações cadastradas."]}, {"slug": "acessorios", "nome": "Acessórios", "painel": ["Cada acessório: nome, foto, texto e ficha", "Peças de reposição", "Relação acessório × motor (gera a tabela)"], "obs": ["A calculadora de diâmetro é um script simples: externo − 2 × parede."]}, {"slug": "setores", "nome": "Setores", "painel": ["Setores cadastráveis com foto opcional"], "obs": ["Setor com foto aparece em linha com imagem; sem foto vai para a lista \"E também\"."]}, {"slug": "onde-comprar", "nome": "Onde comprar", "painel": ["Revendas: cadastrar e descadastrar no painel", "Campos: nome, tipo (matriz/filial/revenda), cidade, UF, endereço, telefone, WhatsApp, latitude e longitude"], "obs": ["Mapa em Leaflet, como no site atual, com a lista ao lado gerada dos mesmos dados.", "No site, o fundo do mapa usa uma camada de tiles clara (ex.: CARTO Positron). Na prancha, o fundo é só o contorno dos estados.", "Busca e filtro por UF no próprio navegador. \"Como chegar\" abre o Google Maps com a latitude e longitude."]}, {"slug": "seja-revendedor", "nome": "Seja um revendedor", "painel": ["Benefícios", "Depoimento", "Destino do formulário"], "obs": ["Página fora do menu principal, acessada por Onde comprar."]}, {"slug": "empresa", "nome": "Empresa", "painel": ["História, missão, visão e valores", "Unidades"], "obs": []}, {"slug": "contato", "nome": "Contato", "painel": ["Canais de contato", "Unidades"], "obs": ["Mesmo formulário de orçamento das páginas de produto."]}, {"slug": "menu-mobile", "nome": "Menu (celular)", "painel": [], "obs": ["Estado aberto do menu no celular."]}];
+let i=0,dev=innerWidth<900?'mobile':'desktop';const sel=document.getElementById('sel');
+META.forEach((m,k)=>{const o=document.createElement('option');o.value=k;o.textContent=(k+1)+'. '+m.nome;sel.appendChild(o)});
+function show(){const m=META[i];let d=dev;if(!IMG[m.slug+'-'+d])d=d==='desktop'?'mobile':'desktop';
+document.getElementById('img').src=IMG[m.slug+'-'+d];document.getElementById('stage').className='stage'+(d==='mobile'?' mob':'');
+document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.d===d));
+sel.value=i;document.getElementById('t').textContent=m.nome;
+const li=(id,a)=>{document.getElementById(id).innerHTML=a.length?a.map(x=>'<li>'+x+'</li>').join(''):'<p class="none">—</p>'};
+li('pn',m.painel);li('ob',m.obs);scrollTo(0,0)}
+sel.onchange=()=>{i=+sel.value;show()};
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{dev=b.dataset.d;show()});
+document.getElementById('prev').onclick=()=>{i=(i-1+META.length)%META.length;show()};
+document.getElementById('next').onclick=()=>{i=(i+1)%META.length;show()};
+show();
+</script></body></html>
