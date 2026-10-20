@@ -575,3 +575,20 @@ footer .legal{margin-top:80px;padding-top:24px;border-top:1px solid rgba(255,255
 .mmenu .x{background:none;border:0;color:#fff;cursor:pointer}
 .burger{cursor:pointer}
 .leaflet-container .leaflet-control-attribution{font-size:11px}
+
+/* CTAs */
+.wai{width:20px;height:20px;flex:none}
+.top .call{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:var(--ink);border:0;padding:12px 18px;font-stretch:100%;font-size:15px;font-weight:700;letter-spacing:0}
+.top .call:hover{background:#fff}
+.slab .row .go{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;font-stretch:75%;font-size:22px;font-weight:700}
+.slab .row .go svg{width:22px;height:22px}
+.slab:hover .go svg{transform:translateX(4px)}
+.ctaband .r p{font-weight:500;font-size:17px}
+.btn.big{padding:20px 28px;font-size:17px}
+.btn .wai{width:20px;height:20px}
+.fcta{margin-top:32px;display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.social{display:flex;gap:18px}
+.social a{width:22px;height:22px;color:#C9CBD0}
+.social a:hover{color:var(--orange)}
+.social svg{width:22px;height:22px}
+@media (max-width:760px){.slab .row .go{font-size:17px}.btn.big{width:100%;justify-content:center}}

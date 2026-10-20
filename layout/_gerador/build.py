@@ -22,7 +22,7 @@ def header(active):
     links = "".join(f'<a href="{k}.html"{" class=\"on\"" if k == active else ""}>{v}</a>' for k, v in NAV)
     return f"""<header class="top">
   <a href="index.html"><img class="logo" src="img/logo_branca.png" alt="Marques da Costa"></a>
-  <nav>{links}<a class="call" href="contato.html">+55 14 99704-3457</a></nav>
+  <nav>{links}<a class="call" href="{WAURL}" target="_blank" rel="noopener"><svg class="wai" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>Pedir orçamento</a></nav>
   <div class="burger" aria-hidden="true"><i></i><i></i><i></i></div>
 </header>
 """
@@ -88,7 +88,7 @@ page("index", "Limpeza de tubos industriais", "", hb)
 
 CTA = f"""<section class="ctaband"><div class="wrap">
   <h2 class="display">Precisa limpar<br>tubos? Fale com a fábrica.</h2>
-  <div class="r"><strong>+55 14 99704-3457</strong><a class="btn dk" href="{WAURL}" target="_blank" rel="noopener">Pedir orçamento pelo WhatsApp</a></div>
+  <div class="r"><p>Resposta da equipe técnica em horário comercial.</p><a class="btn dk big" href="{WAURL}" target="_blank" rel="noopener"><svg class="wai" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>Pedir orçamento pelo WhatsApp</a></div>
 </div></section>"""
 
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg>'
@@ -408,7 +408,7 @@ inp.oninput=ap;document.querySelector('.search button').onclick=ap;
 </script>
 <section class="ctaband"><div class="wrap">
   <h2 class="display">Quer revender<br>Marques da Costa?</h2>
-  <div class="r"><strong>Seja um revendedor autorizado</strong><a class="btn dk" href="seja-revendedor.html">Cadastrar minha empresa</a></div>
+  <div class="r"><p>Condições para revendas e distribuidores.</p><a class="btn dk big" href="seja-revendedor.html">Cadastrar minha empresa</a></div>
 </div></section>"""
 page("onde-comprar", "Onde comprar", "onde-comprar", oc)
 
@@ -494,7 +494,7 @@ ct = f"""<section class="phero plain">
 </section>
 <section class="sec"><div class="wrap">
   <div class="chan">
-    <div><dt>WhatsApp comercial</dt><dd>+55 14 99704-3457<small><a class="btn wa" style="margin-top:14px" href="{WAURL}" target="_blank" rel="noopener">Abrir conversa</a></small></dd></div>
+    <div><dt>WhatsApp comercial</dt><dd>Orçamentos e dúvidas<small><a class="btn wa" style="margin-top:14px" href="{WAURL}" target="_blank" rel="noopener"><svg class="wai" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>Iniciar conversa</a><span style="display:block;margin-top:10px;color:var(--steel)">+55 14 99704-3457</span></small></dd></div>
     <div><dt>Central de atendimento</dt><dd>(14) 3425-2533<small>(14) 3425-2544 · segunda a sexta</small></dd></div>
     <div><dt>E-mail</dt><dd style="font-size:32px">vendas@<br>marquesdacosta.com.br<small>Projetos especiais: projeto@marquesdacosta.com.br</small></dd></div>
   </div>
